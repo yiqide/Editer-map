@@ -1,0 +1,6 @@
+/Users/a0624/Projects/n1/n1/bin/Debug/n1.exe
+/Users/a0624/Projects/n1/n1/bin/Debug/n1.pdb
+/Users/a0624/Projects/n1/n1/obj/Debug/n1.csproj.AssemblyReference.cache
+/Users/a0624/Projects/n1/n1/obj/Debug/n1.csproj.CoreCompileInputs.cache
+/Users/a0624/Projects/n1/n1/obj/Debug/n1.exe
+/Users/a0624/Projects/n1/n1/obj/Debug/n1.pdb

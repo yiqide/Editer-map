@@ -1,0 +1,6 @@
+/Users/a0624/Projects/k/k/bin/Debug/k.exe
+/Users/a0624/Projects/k/k/bin/Debug/k.pdb
+/Users/a0624/Projects/k/k/obj/Debug/k.csproj.AssemblyReference.cache
+/Users/a0624/Projects/k/k/obj/Debug/k.csproj.CoreCompileInputs.cache
+/Users/a0624/Projects/k/k/obj/Debug/k.exe
+/Users/a0624/Projects/k/k/obj/Debug/k.pdb
