@@ -6,11 +6,10 @@ namespace n1
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("你好啊");
 
 
-
-            Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack");
+            Console.WriteLine("🤔???");
 
         }
     }
