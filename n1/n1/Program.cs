@@ -10,7 +10,8 @@ namespace n1
 
 
 
-            Console.WriteLine("fack");
+            Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack"); Console.WriteLine("fack");
+
         }
     }
 }
