@@ -10,6 +10,8 @@ namespace n1
 
 
             Console.WriteLine("🤔???");
+            Console.WriteLine("🤔???");
+            Console.WriteLine("🤔???"); Console.WriteLine("🤔???");
 
         }
     }
