@@ -1,0 +1,132 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+[CustomEditor(typeof(test3))]
+public class TestGUI : Editor
+{
+    private Queue<int> hight;
+    private Tols _tols = new Tols();
+
+    private float w;
+    public override void OnInspectorGUI()
+    {
+        // base.OnInspectorGUI();
+        // return;
+        bool avalibe = isAvalibe();
+        _tols.Init(avalibe);
+        var test = ((test3)target).Platform;
+        // int w = (int)EditorGUILayout.BeginHorizontal().width;
+        // EditorGUILayout.EndHorizontal();
+        float h = 18;
+        for (int i = 0; i < test.Count; i++)
+        {
+            var height = EditorGUILayout.BeginHorizontal().height;
+            //Debug.Log(height);
+            EditorGUILayout.LabelField("模块名称");
+            test[i].myDataName = EditorGUI.TextField(new Rect(80, _tols.GetHigt_AddNum(h, avalibe)+6, 100, 18), test[i].myDataName);
+            EditorGUI.LabelField(new Rect(200,_tols.GetHigt_AddNum(h, avalibe)+6,40,18),"数量:"+ test[i].myDatas.Count.ToString());
+            EditorGUI.BeginFoldoutHeaderGroup(new Rect(250,_tols.GetHigt_AddNum(h, avalibe)+6,40,18),new SerializedProperty());
+            h += (height+2);
+            EditorGUILayout.EndHorizontal();
+            for (int j = 0; j < test[i].myDatas.Count; j++)
+            {
+                var data = new Data();
+                var h2= EditorGUILayout.BeginHorizontal().height;
+                data.TagetName=EditorGUILayout.TextField(test[i].myDatas[j].TagetName);
+                data.Taget=(GameObject) EditorGUILayout.ObjectField(test[i].myDatas[j].Taget, typeof(GameObject),true);
+                EditorGUILayout.EndHorizontal();
+                test[i].myDatas[j] =data;
+                h += (h2+2);
+            }
+        }
+    }
+
+    private bool isAvalibe()
+    {
+        var r = EditorGUILayout.BeginHorizontal();
+        var h = r.height;
+        w = r.width;
+        EditorGUILayout.LabelField("************************************************************************************************"); //18
+        EditorGUILayout.EndHorizontal();
+        if (h < 2)
+        {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+public class Tols
+{
+    private Queue<float> num = new Queue<float>();
+
+    private LinkList<float> _linkList;
+    public void Init(bool isAvablie)
+    {
+        if (isAvablie)
+        {
+            num.Clear();
+        }
+        else
+        {
+            _linkList = new LinkList<float>(num.ToArray());
+        }
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="num"></param>
+    /// <param name="cast">验证条件，用来区分EditorGUILayout.BeginHorizontal().height是否是0</param>
+    /// <returns></returns>
+    public float GetHigt_AddNum(float num,bool avalibe)
+    {
+        if (!avalibe)
+        {
+            if (_linkList.max_indx==0)
+            {
+                return 0;
+            }
+            return _linkList.Next();
+            //返回上一个值
+        }
+        this.num.Enqueue(num);
+        return num;
+    }
+}
+
+public class LinkList<T>
+{
+    private int Max_indx = 0;
+    public int max_indx
+    {
+        get { return Max_indx; }
+    }
+    private int indx = 0;
+    private T[] Array;
+    public  LinkList(T[] array)
+    {
+        if (array.Length==0)
+        {
+            return;
+        }
+        Array = array;
+        Max_indx = array.Length-1;
+    }
+    public T Next()
+    {
+        T restou= Array[indx];
+        indx++;
+        if (indx>Max_indx)
+        {
+            indx = 0;
+        }
+        return restou;
+    }
+}
+
